@@ -14,7 +14,7 @@ model_uri = "models:/SkinDisease/1"
 model = mlflow.tensorflow.load_model(model_uri)
 
 # รายชื่อคลาสที่โมเดลสามารถจำแนกได้
-class_names = ["Bacterial Dermatosis", "Fungal Infection", "Hypersensitivity Dermatitis", "Healthy"]
+class_names = class_names = ["Bacterial dermatosis", "Fungal infections", "Healthy", "Hypersensitivity allergic dermatosis"]
 
 def preprocess_image(img):
     img = Image.open(BytesIO(img))
