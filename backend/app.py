@@ -8,19 +8,13 @@ import numpy as np
 from tensorflow.keras.preprocessing import image
 from io import BytesIO
 
-# โหลดโมเดลจากไฟล์ best_model.h5
-def load_model():
-    if os.path.exists("best_model.h5"):
-        model = tf.keras.models.load_model("best_model.h5")
-        return model
-    else:
-        raise Exception("Model file not found.")
-
-# โหลดโมเดลที่ดีที่สุดจาก Backend
-model = load_model()
+# โหลดโมเดลจาก mlflow
+mlflow.set_tracking_uri("http://34.87.66.93:5000")
+model_uri = "models:/SkinDisease/1"
+model = mlflow.tensorflow.load_model(model_uri)
 
 # รายชื่อคลาสที่โมเดลสามารถจำแนกได้
-# class_names = ["Bacterial dermatosis", "Fungal infections", "Healthy", "Hypersensitivity allergic dermatosis"]
+class_names = ["Bacterial dermatosis", "Fungal infections", "Healthy", "Hypersensitivity allergic dermatosis"]
 
 app = FastAPI()
 
