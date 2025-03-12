@@ -2,11 +2,13 @@ import gradio as gr
 import requests
 import os
 from io import BytesIO
+from tensorflow.keras.preprocessing import image
 from PIL import Image
 import numpy as np
 
 # Backend URL (adjusted for Docker linking)
-BACKEND_URL = "http://backend:8087/predict"
+BACKEND_URL = "http://34.126.135.147:8087/predict"
+# BACKEND_URL = "http://localhost:8087/predict"
 
 def skin_detection(image):  # รับภาพจากผู้ใช้
     # แปลง numpy array ที่ได้จาก Gradio เป็น Image
